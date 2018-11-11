@@ -15,6 +15,8 @@ import java.util.Map;
  * 1. Normal application behaviour, just create objects that can be garbage collected
  * 2. Memory leak behaviour, create objects which cannot be garbage collected
  * 3. Deadlock behaviour, two threads waiting for each other
+ *
+ * One url testperformance is added to test whether we have a performance issue.
  */
 @RestController
 public class PerformanceController {
@@ -127,6 +129,15 @@ public class PerformanceController {
             }
         });
 
+    }
+
+    /**
+     * An url to test whether a peformance issue occurs
+     * @return A string printing a random number in order to verify whether the return message changed.
+     */
+    @RequestMapping("/testperformance")
+    public String testPerformance() {
+        return "Returned " + Math.random();
     }
 
 }
